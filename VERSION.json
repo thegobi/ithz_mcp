@@ -1,0 +1,19 @@
+{
+  "build_id": "product-candidate-llm-intake.20260530.8",
+  "claims": [
+    "not_git_replacement",
+    "not_production_database",
+    "not_cloud_sync"
+  ],
+  "mode": "local-first",
+  "package_created_by": "run-production-readiness",
+  "package_dist": "ithz_mcp-v0.1-product-candidate",
+  "package_filename": "ithz_mcp.zip",
+  "package_name": "ithz_mcp-v0.1-product-candidate",
+  "package_zip": "ithz_mcp.zip",
+  "package_zip_sha256": "7d383570bbc6d27644abf112144ad600a8674305c75949550b0f3a17c6c37553",
+  "product": "ITHZ-MCP / ITHZ ContextDB",
+  "source_git_commit": "75a2fa2d92fe",
+  "source_tree_dirty": false,
+  "version": "0.1.0-alpha"
+}

@@ -1,13 +1,16 @@
 # ITHZ-MCP v0.1 product candidate
 
-Build: `product-candidate-agent-intake.20260530.3`
+Build: `product-candidate-llm-intake.20260530.8`
 
 This package is a production-test candidate for local deterministic project memory. It includes native `project.ithz` storage, memory-first MCP configs, host installer scripts, prompt/response summary memory, durable instruction memory, workflow profiles, Git merge driver support and shared-project smoke coverage.
 
-This build adds first-install agent intake. `install-project --agent-intake auto` uses Codex CLI in read-only mode when available to store sanitized project summary, workflow, decision, gate and risk memory. If Codex CLI is not available, `ithz_mcp.md` asks the installing host agent to perform manual intake.
+Changes in this package:
 
-Normal `project.ithz` archives store memory/index layers, not a backup copy of the source tree.
-
-Reinstalling into a project with an existing safe `project.ithz` reuses it and skips first-install agent intake and workflow re-adoption by default.
+- Uses one stable package artifact: `ithz_mcp.zip`.
+- Moves build identity and source commit metadata to `VERSION.json`.
+- Publishes the package hash in `SHA256SUMS.txt`.
+- Handles systems without `git` in PATH without crashing `version` or `install-project`.
+- Uses portable `.cmd` launchers instead of embedding the build machine's Python path.
+- Reports native transport failures cleanly when `ithz-native.exe` is missing or blocked.
 
 It does not replace Git, a production database, cloud sync, external host history, vector databases or every retrieval system.
