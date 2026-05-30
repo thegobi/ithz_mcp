@@ -1,4 +1,4 @@
-﻿# ITHZ-MCP Bootstrap Installer
+# ITHZ-MCP Bootstrap Installer
 
 Use this file when you want an AI coding agent to install ITHZ-MCP into the current project.
 
@@ -37,24 +37,30 @@ https://github.com/thegobi/ithz_mcp.git
 Package file:
 
 ```text
-ithz_mcp-v0.1-product-candidate.zip
+ithz_mcp-v0.1-product-candidate-20260530.2.zip
 ```
 
-Direct package URL:
+Authenticated raw package URL, if the host has GitHub access to the private repository:
 
 ```text
-https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate.zip
+https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate-20260530.2.zip
 ```
 
 If this file is distributed inside an ITHZ-MCP package, use that package directly.
 
 If this file was copied into a project, clone the trusted repository or ask the user for the local package path. Do not guess a random GitHub repository.
 
-Alternative clone-based install:
+For a private repository, use Git/Git Credential Manager or the host's configured GitHub authentication.
+
+Do not keep the downloaded package inside the target project. Install or extract the runtime into a user-local cache, then run the installer from there. Project-local `.ithz-install` is only temporary scratch plus an installation log.
 
 ```powershell
-git clone https://github.com/thegobi/ithz_mcp.git .ithz-install\package-repo
-Expand-Archive .ithz-install\package-repo\ithz_mcp-v0.1-product-candidate.zip .ithz-install\package -Force
+$RuntimeRoot = Join-Path $env:LOCALAPPDATA "ITHZ-MCP\packages\ithz_mcp-v0.1-product-candidate-20260530.2"
+New-Item -ItemType Directory -Force -Path (Split-Path $RuntimeRoot) | Out-Null
+git clone https://github.com/thegobi/ithz_mcp.git "$RuntimeRoot-repo"
+if (Test-Path $RuntimeRoot) { Remove-Item -Recurse -Force $RuntimeRoot }
+Expand-Archive "$RuntimeRoot-repo\ithz_mcp-v0.1-product-candidate-20260530.2.zip" $RuntimeRoot -Force
+python -m ithz_mcp version
 ```
 
 ## Install From A Package Folder
@@ -82,7 +88,37 @@ project.ithz
 .gitignore
 ```
 
-Installer scratch files are written under `.ithz-install/tmp/` and are removed after a successful install unless `--keep-install-artifacts` is explicitly used.
+Installer scratch files are written under `.ithz-install/tmp/` and are removed after a successful install unless `--keep-install-artifacts` is explicitly used. After a normal successful install, `.ithz-install/` should contain only `install.log`.
+
+On first install, `install-project` also runs first project intake:
+
+```powershell
+python -m ithz_mcp install-project --apply --import-agent-history --agent-intake auto
+```
+
+`--agent-intake auto` uses Codex CLI in read-only mode when `codex` is available. It records only sanitized project summary, workflow rules, decisions, gates, risks, candidate files, next steps, and evidence gaps into `project.ithz`. It must not store secrets.
+
+If Codex CLI is not available, or the installer reports `manual_host_intake_required=true`, the installing agent must complete host-side intake in this thread before continuing normal work:
+
+1. Read `project.md`.
+2. Ask ITHZ-MCP for status and an archive context pack.
+3. Inspect only the small set of bootstrap/project docs needed to understand workflow, deploy, tests, gates, risks, and decisions.
+4. Store durable findings explicitly:
+
+```powershell
+python -m ithz_mcp ingest-user-instruction --project . --profile <user-or-team-profile> --text "<short durable workflow/decision/gate/risk summary>"
+```
+
+or use the typed commands:
+
+```powershell
+python -m ithz_mcp record-workflow-rule --project . --profile <user-or-team-profile> --text "<durable workflow rule>"
+python -m ithz_mcp record-project-decision --project . --profile <user-or-team-profile> --text "<project decision>"
+python -m ithz_mcp record-gate-rule --project . --profile <user-or-team-profile> --text "<required validation gate>"
+python -m ithz_mcp record-risk-rule --project . --profile <user-or-team-profile> --text "<must-not-break or safety rule>"
+```
+
+5. Report whether manual host intake was completed. Do not pretend the project was semantically analyzed if only deterministic path/index data was recorded.
 
 ## Existing Team Project
 
@@ -142,4 +178,3 @@ Installation is successful only if:
 - no Git commit was made automatically.
 - no cloud sync was added.
 - no Git replacement or general token-saving claim was added.
-
