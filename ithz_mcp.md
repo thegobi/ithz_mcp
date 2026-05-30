@@ -37,13 +37,13 @@ https://github.com/thegobi/ithz_mcp.git
 Package file:
 
 ```text
-ithz_mcp-v0.1-product-candidate-20260530.2.zip
+ithz_mcp-v0.1-product-candidate-20260530.3.zip
 ```
 
 Authenticated raw package URL, if the host has GitHub access to the private repository:
 
 ```text
-https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate-20260530.2.zip
+https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate-20260530.3.zip
 ```
 
 If this file is distributed inside an ITHZ-MCP package, use that package directly.
@@ -55,11 +55,11 @@ For a private repository, use Git/Git Credential Manager or the host's configure
 Do not keep the downloaded package inside the target project. Install or extract the runtime into a user-local cache, then run the installer from there. Project-local `.ithz-install` is only temporary scratch plus an installation log.
 
 ```powershell
-$RuntimeRoot = Join-Path $env:LOCALAPPDATA "ITHZ-MCP\packages\ithz_mcp-v0.1-product-candidate-20260530.2"
+$RuntimeRoot = Join-Path $env:LOCALAPPDATA "ITHZ-MCP\packages\ithz_mcp-v0.1-product-candidate-20260530.3"
 New-Item -ItemType Directory -Force -Path (Split-Path $RuntimeRoot) | Out-Null
 git clone https://github.com/thegobi/ithz_mcp.git "$RuntimeRoot-repo"
 if (Test-Path $RuntimeRoot) { Remove-Item -Recurse -Force $RuntimeRoot }
-Expand-Archive "$RuntimeRoot-repo\ithz_mcp-v0.1-product-candidate-20260530.2.zip" $RuntimeRoot -Force
+Expand-Archive "$RuntimeRoot-repo\ithz_mcp-v0.1-product-candidate-20260530.3.zip" $RuntimeRoot -Force
 python -m ithz_mcp version
 ```
 
