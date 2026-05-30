@@ -1,0 +1,4 @@
+﻿ae71fdf22cf09b359ee7b4dcdd9b5b70a3c7b92be969815d2d2e1d08e314c46e  ithz_mcp.md
+1e6b02442f14ddeda114ebc45ae4e226ca865d101863db4210ec9a9f24810ee5  ithz_mcp-v0.1-product-candidate.zip
+d23d9451a9ddb5184f4ed41d87ec70c67f196a91dc2d471641c77eb12673f2ff  README.md
+1dcfe9de2db5d6107fe09aec41d6ce04d5f6f898336ca2f006c26e1b4c535690  RELEASE_NOTES.md
