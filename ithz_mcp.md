@@ -1,4 +1,4 @@
-# ITHZ-MCP Bootstrap Installer
+﻿# ITHZ-MCP Bootstrap Installer
 
 Use this file when you want an AI coding agent to install ITHZ-MCP into the current project.
 
@@ -40,7 +40,7 @@ Package file:
 ithz_mcp-v0.1-product-candidate.zip
 ```
 
-Authenticated raw package URL, if the host has GitHub access to the private repository:
+Direct package URL:
 
 ```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate.zip
@@ -50,7 +50,7 @@ If this file is distributed inside an ITHZ-MCP package, use that package directl
 
 If this file was copied into a project, clone the trusted repository or ask the user for the local package path. Do not guess a random GitHub repository.
 
-For a private repository, use Git/Git Credential Manager or the host's configured GitHub authentication:
+Alternative clone-based install:
 
 ```powershell
 git clone https://github.com/thegobi/ithz_mcp.git .ithz-install\package-repo
@@ -142,3 +142,4 @@ Installation is successful only if:
 - no Git commit was made automatically.
 - no cloud sync was added.
 - no Git replacement or general token-saving claim was added.
+
