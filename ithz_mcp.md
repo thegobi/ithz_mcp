@@ -23,7 +23,8 @@ If you are Codex, Claude Code, Cursor, Antigravity, or another local coding agen
 6. Do not run `git add`, `git commit`, `git push`, `git reset`, or `git checkout` automatically.
 7. If Git is present, configure the ITHZ diff/merge driver so `project.ithz` can be reviewed and semantically merged.
 8. If local agent history is available, import only redacted summaries and append them to the existing `project.ithz`.
-9. After installation, report exactly what was created, reused, and configured.
+9. If the user gives a durable project instruction, store it as typed memory in `project.ithz` with the write-enabled durable instruction tools.
+10. After installation, report exactly what was created, reused, and configured.
 
 ## Package Source
 
@@ -114,6 +115,20 @@ Use this startup sequence:
 4. Request a context pack for the task.
 5. Inspect only candidate files and evidence gaps returned by the pack.
 6. After the task, write a sanitized checkpoint if the write-enabled profile is active.
+
+If the user gives a lasting workflow rule such as "after each task, run tests, commit and deploy through SSH", do not leave it only in the chat. Store it explicitly:
+
+```powershell
+python -m ithz_mcp record-workflow-rule --project . --profile <user-or-team-profile> --text "<durable workflow rule>"
+python -m ithz_mcp record-gate-rule --project . --profile <user-or-team-profile> --text "<required validation gate>"
+python -m ithz_mcp record-risk-rule --project . --profile <user-or-team-profile> --text "<must-not-break or secret-safety rule>"
+```
+
+Or ingest a short instruction block deterministically:
+
+```powershell
+python -m ithz_mcp ingest-user-instruction --project . --profile <user-or-team-profile> --text "<user instruction block>"
+```
 
 ## Success Criteria
 
