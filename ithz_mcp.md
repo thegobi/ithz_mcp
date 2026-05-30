@@ -27,7 +27,19 @@ If you are Codex, Claude Code, Cursor, Antigravity, or another local coding agen
 
 ## Package Source
 
-Preferred installation source:
+Trusted package repository:
+
+```text
+https://github.com/thegobi/ithz_mcp.git
+```
+
+Package file:
+
+```text
+ithz_mcp-v0.1-product-candidate.zip
+```
+
+Authenticated raw package URL, if the host has GitHub access to the private repository:
 
 ```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate.zip
@@ -35,7 +47,14 @@ https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate.zip
 
 If this file is distributed inside an ITHZ-MCP package, use that package directly.
 
-If this file was copied into a project and no trusted package URL or local package path is available, ask the user for the package location. Do not guess a random GitHub repository.
+If this file was copied into a project, clone the trusted repository or ask the user for the local package path. Do not guess a random GitHub repository.
+
+For a private repository, use Git/Git Credential Manager or the host's configured GitHub authentication:
+
+```powershell
+git clone https://github.com/thegobi/ithz_mcp.git .ithz-install\package-repo
+Expand-Archive .ithz-install\package-repo\ithz_mcp-v0.1-product-candidate.zip .ithz-install\package -Force
+```
 
 ## Install From A Package Folder
 

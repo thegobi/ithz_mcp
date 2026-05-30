@@ -6,9 +6,21 @@ Use it like this:
 
 1. Copy `ithz_mcp.md` into the target project.
 2. Ask the local coding agent: `See ithz_mcp.md and install`.
-3. The agent downloads `ithz_mcp-v0.1-product-candidate.zip`, runs smoke checks, initializes the current project, reuses existing `project.ithz` if present, and configures local MCP/Git-driver support.
+3. The agent clones this private package repository, expands `ithz_mcp-v0.1-product-candidate.zip`, runs smoke checks, initializes the current project, reuses existing `project.ithz` if present, and configures local MCP/Git-driver support.
 
-Direct package URL:
+Trusted package repository:
+
+```text
+https://github.com/thegobi/ithz_mcp.git
+```
+
+Package file:
+
+```text
+ithz_mcp-v0.1-product-candidate.zip
+```
+
+The raw package URL requires GitHub access to this private repository:
 
 ```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp-v0.1-product-candidate.zip
