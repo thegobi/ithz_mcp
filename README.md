@@ -31,6 +31,13 @@ macOS MCP package URL:
 https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-macos.zip
 ```
 
+Ubuntu/Linux package URLs:
+
+```text
+https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-ubuntu.tar.gz
+https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-ubuntu.deb
+```
+
 macOS Intel native build kit URL:
 
 ```text
@@ -58,6 +65,24 @@ cd native_ithz/dist/macos_native/ithz-native-preview-v0.1-alpha-rc2-macos-x86_64
 ./install_macos_native.sh
 export ITHZ_NATIVE_EXE="$HOME/.local/share/ithz-mcp/native/ithz-native"
 ```
+
+## Ubuntu/Linux
+
+The Ubuntu package includes `install_ithz.md`, Linux host installers, fixed
+user-local wrapper scripts, a Linux native source build kit and extraction-backed
+fallback commands:
+
+```sh
+tar -xzf ithz-mcp-ubuntu.tar.gz
+cd ithz-mcp-ubuntu
+./install.sh
+./install_linux_native.sh
+ithz-mcp version
+ithz-native-resolve
+```
+
+Native Linux `project.ithz` support uses the bundled build kit and dynamically
+loads the system zlib runtime (`libz.so.1` / `libz.so`).
 
 Package metadata:
 

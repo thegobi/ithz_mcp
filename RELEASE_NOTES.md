@@ -8,6 +8,8 @@ Changes in this package:
 
 - Uses one stable package artifact: `ithz_mcp.zip`.
 - Adds `ithz-mcp-macos.zip` for macOS stdio MCP host setup.
+- Adds Ubuntu/Linux package artifacts: `ithz-mcp-ubuntu.tar.gz` and
+  `ithz-mcp-ubuntu.deb`.
 - Adds `ithz-native-macos-intel-build-kit.zip`, which contains the native
   source subset needed to build `ithz-native` on Mac Intel.
 - Adds GitHub Actions workflow support for building the Mac Intel native
@@ -21,5 +23,10 @@ Changes in this package:
 The macOS MCP package works as a Python stdio MCP server. Native `project.ithz`
 storage on macOS requires the Mac Intel `ithz-native` binary built from the
 included build kit or supplied separately.
+
+Ubuntu update: `install_ithz.md` is included in the tarball, user-local command
+wrappers are generated as prefix scripts instead of broken symlinks, and the
+Linux native build kit dynamically loads `libz.so.1` / `libz.so` for native
+archive operations.
 
 It does not replace Git, a production database, cloud sync, external host history, vector databases or every retrieval system.
