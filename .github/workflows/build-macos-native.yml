@@ -1,0 +1,52 @@
+name: Build macOS Intel ithz-native
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ithz-native-macos-intel-build-kit.zip"
+      - ".github/workflows/build-macos-native.yml"
+
+jobs:
+  macos-intel-native:
+    name: macOS Intel native package
+    runs-on: macos-13
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify runner architecture
+        run: |
+          set -euo pipefail
+          uname -a
+          test "$(uname -m)" = "x86_64"
+
+      - name: Unpack build kit
+        run: |
+          set -euo pipefail
+          unzip -q ithz-native-macos-intel-build-kit.zip -d build-kit
+          chmod +x build-kit/native_ithz/macos_native/build_macos_native_package.sh
+
+      - name: Build and smoke-test macOS Intel package
+        run: |
+          set -euo pipefail
+          cd build-kit
+          native_ithz/macos_native/build_macos_native_package.sh --arch x86_64
+
+      - name: Collect SHA-256
+        run: |
+          set -euo pipefail
+          cd build-kit/native_ithz/dist/macos_native
+          shasum -a 256 ithz-native-preview-v0.1-alpha-rc2-macos-x86_64.zip > SHA256SUMS-macos-x86_64.txt
+          cat SHA256SUMS-macos-x86_64.txt
+
+      - name: Upload macOS Intel native package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ithz-native-preview-v0.1-alpha-rc2-macos-x86_64
+          path: |
+            build-kit/native_ithz/dist/macos_native/ithz-native-preview-v0.1-alpha-rc2-macos-x86_64.zip
+            build-kit/native_ithz/dist/macos_native/SHA256SUMS-macos-x86_64.txt
+          if-no-files-found: error

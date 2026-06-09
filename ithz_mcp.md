@@ -26,6 +26,8 @@ If you are Codex, Claude Code, Cursor, Antigravity, or another local coding agen
 9. If the user gives a durable project instruction, store it as typed memory in `project.ithz` with the write-enabled durable instruction tools.
 10. After installation, report exactly what was created, reused, and configured.
 
+Do not ask the user which partial install path to choose when the safe default is clear. In particular, on macOS without a compatible `ithz-native` binary, continue automatically with the supported parts: Cursor/Codex/Claude/Antigravity MCP host config, the `*.ithz` Git diff/merge driver, ITHZ Drive/open-temp fallback if present, and a clear native-binary gap report. Do not try to create or overwrite native `project.ithz` storage until a compatible macOS `ithz-native` binary is supplied through `ITHZ_NATIVE_EXE` or a package-local native binary.
+
 ## Package Source
 
 Trusted package repository:
@@ -80,6 +82,19 @@ Then install into the target project:
 cd <target-project>
 python -m ithz_mcp install-project --apply --import-agent-history
 ```
+
+### macOS safe default
+
+If this is macOS and no compatible `ithz-native` binary is present, do not stop for an A/B/C/D question. Install the official working subset:
+
+```text
+Cursor/Codex/Claude/Antigravity MCP host config
+*.ithz Git diff/merge driver
+ITHZ Drive.app or open-as-temp-folder fallback, if packaged
+native-binary gap report
+```
+
+In that mode, use legacy MCP storage for the host config and report that native `project.ithz` creation is deferred until `ITHZ_NATIVE_EXE` points to a compatible macOS native binary. If an existing `project.ithz` was pulled from Git, preserve it and configure diff/merge support, but do not rewrite it without native support.
 
 For a normal first install, this creates or validates:
 

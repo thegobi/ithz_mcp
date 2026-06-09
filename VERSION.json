@@ -1,5 +1,5 @@
 {
-  "build_id": "product-candidate-llm-intake.20260530.8",
+  "build_id": "product-candidate-mcp28-ubuntu-fallback.20260608.2",
   "claims": [
     "not_git_replacement",
     "not_production_database",
@@ -11,9 +11,9 @@
   "package_filename": "ithz_mcp.zip",
   "package_name": "ithz_mcp-v0.1-product-candidate",
   "package_zip": "ithz_mcp.zip",
-  "package_zip_sha256": "7d383570bbc6d27644abf112144ad600a8674305c75949550b0f3a17c6c37553",
+  "package_zip_sha256": "f23e9df79c2ff46e4b88931c70fd6700806d48dfa0c79eba08fd1c6cb6bc235f",
   "product": "ITHZ-MCP / ITHZ ContextDB",
-  "source_git_commit": "75a2fa2d92fe",
-  "source_tree_dirty": false,
+  "source_git_commit": "7414d5cf204f",
+  "source_tree_dirty": true,
   "version": "0.1.0-alpha"
 }
