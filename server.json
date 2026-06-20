@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.ithz/ithz-mcp",
+  "title": "ITHZ MCP",
+  "description": "Local-first deterministic project memory for AI coding agents and MCP workflows.",
+  "version": "0.1.0a1",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "ithz-mcp",
+      "version": "0.1.0a1",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ],
+  "websiteUrl": "https://ithz.dev/mcp/",
+  "repository": {
+    "url": "https://github.com/thegobi/ithz_mcp",
+    "source": "github",
+    "id": "1254086025"
+  }
+}

@@ -1,54 +1,119 @@
-# ITHZ-MCP package
+# ITHZ MCP
 
-This repository carries the installable ITHZ-MCP package artifacts, not the
-full development source tree.
+<!-- mcp-name: dev.ithz/ithz-mcp -->
 
-Use it like this:
+Local-first deterministic project memory for AI coding agents and
+MCP-compatible development workflows.
 
-1. Copy `ithz_mcp.md` into the target project.
-2. Ask the local coding agent: `See ithz_mcp.md and install`.
-3. The agent clones this package repository, expands `ithz_mcp.zip` or
-   `ithz-mcp-macos.zip`, runs smoke checks, initializes the current project,
-   reuses an existing `project.ithz` if present, and configures local
-   MCP/Git-driver support.
-4. If the user gives durable workflow, decision, gate or risk instructions, the write-enabled MCP profile stores them as typed memory in `project.ithz`.
+ITHZ MCP stores durable agent work memory in project-owned files: context packs,
+decisions, gates, risks, reviewer notes, scoped claims and explicit checkpoints.
+Git remains the code history and transport; ITHZ MCP keeps the operational
+memory that helps agents resume work without depending only on hidden chat
+history or repeated full-repo scans.
 
-Repository:
+## Public Links
 
-```text
-https://github.com/thegobi/ithz_mcp.git
+- Product page: https://ithz.dev/mcp/
+- PyPI package: https://pypi.org/project/ithz-mcp/
+- Official MCP Registry name: `dev.ithz/ithz-mcp`
+- Official MCP Registry API:
+  https://registry.modelcontextprotocol.io/v0.1/servers/dev.ithz%2Fithz-mcp/versions/latest
+- Package repository: https://github.com/thegobi/ithz_mcp
+
+## Install From PyPI
+
+```sh
+python -m pip install ithz-mcp
+python -m ithz_mcp version
 ```
 
-Direct package URL:
+Minimal stdio MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "ithz_mcp": {
+      "command": "python",
+      "args": [
+        "-m",
+        "ithz_mcp",
+        "mcp-server",
+        "--project",
+        "/path/to/project",
+        "--mode",
+        "read-only",
+        "--protocol",
+        "direct",
+        "--storage-profile",
+        "native-archive"
+      ]
+    }
+  }
+}
+```
+
+Use a write-enabled profile only when your host and workflow explicitly allow
+the agent to append sanitized task checkpoints into `project.ithz`.
+
+## What It Is
+
+ITHZ MCP is a local project-memory layer for AI-assisted development. It is
+designed for agents and developers who want deterministic, auditable handoff
+state next to the project:
+
+- context packs for onboarding an agent to a repo or task
+- durable decisions, gates, risks and next steps
+- reviewer notes and scoped claim ledgers
+- end-of-task checkpoints for future agents
+- local-first operation through project-owned memory files
+- MCP stdio integration for compatible coding-agent hosts
+
+## What It Is Not
+
+ITHZ MCP does not replace Git, a production database, cloud sync, a source-code
+backup, a vector database, or every retrieval system. It complements these tools
+by keeping durable project memory explicit and inspectable.
+
+## Distribution Artifacts
+
+This repository carries public package artifacts and metadata, not the full
+development source tree.
+
+Direct artifact URLs:
 
 ```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz_mcp.zip
-```
-
-macOS MCP package URL:
-
-```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-macos.zip
-```
-
-Ubuntu/Linux package URLs:
-
-```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-ubuntu.tar.gz
 https://github.com/thegobi/ithz_mcp/raw/main/ithz-mcp-ubuntu.deb
-```
-
-macOS Intel native build kit URL:
-
-```text
 https://github.com/thegobi/ithz_mcp/raw/main/ithz-native-macos-intel-build-kit.zip
 ```
 
-## macOS Intel native runtime
+Metadata:
 
-`ithz-mcp-macos.zip` installs the Python stdio MCP layer. Native
-`project.ithz` storage on Mac Intel additionally needs `ithz-native`, which can
-be built from `ithz-native-macos-intel-build-kit.zip`:
+```text
+server.json
+VERSION.json
+SHA256SUMS.txt
+RELEASE_NOTES.md
+```
+
+## Agent Bootstrap
+
+For agent-assisted installation into another project:
+
+1. Copy `ithz_mcp.md` or `install_ithz.md` into the target project.
+2. Ask the local coding agent to read that file and install ITHZ MCP.
+3. The agent should preserve an existing `project.ithz` if present, configure
+   local MCP/Git support, and report exactly what changed.
+
+## Platform Notes
+
+### macOS Intel Native Runtime
+
+`ithz-mcp-macos.zip` installs the Python stdio MCP layer. Native `project.ithz`
+storage on Mac Intel additionally needs `ithz-native`, which can be built from
+`ithz-native-macos-intel-build-kit.zip`:
 
 ```sh
 unzip ithz-native-macos-intel-build-kit.zip
@@ -66,11 +131,11 @@ cd native_ithz/dist/macos_native/ithz-native-preview-v0.1-alpha-rc2-macos-x86_64
 export ITHZ_NATIVE_EXE="$HOME/.local/share/ithz-mcp/native/ithz-native"
 ```
 
-## Ubuntu/Linux
+### Ubuntu/Linux
 
-The Ubuntu package includes `install_ithz.md`, Linux host installers, fixed
-user-local wrapper scripts, a Linux native source build kit and extraction-backed
-fallback commands:
+The Ubuntu package includes `install_ithz.md`, Linux host installers, user-local
+wrapper scripts, a Linux native source build kit and extraction-backed fallback
+commands:
 
 ```sh
 tar -xzf ithz-mcp-ubuntu.tar.gz
@@ -84,13 +149,7 @@ ithz-native-resolve
 Native Linux `project.ithz` support uses the bundled build kit and dynamically
 loads the system zlib runtime (`libz.so.1` / `libz.so`).
 
-Package metadata:
+## Status
 
-```text
-VERSION.json
-SHA256SUMS.txt
-```
-
-The artifact name is stable. Build identity, source commit and package hash live in `VERSION.json` and `SHA256SUMS.txt`; old package versions belong in Git history or releases, not as many ZIP files in `main`.
-
-ITHZ-MCP does not replace Git, a production database, cloud sync, host chat history, vector databases, or every retrieval system.
+ITHZ MCP is currently free during alpha preview. Public package metadata is
+published on PyPI and in the official MCP Registry.
