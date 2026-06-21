@@ -2,6 +2,10 @@
 
 <!-- mcp-name: dev.ithz/ithz-mcp -->
 
+[![PyPI](https://img.shields.io/pypi/v/ithz-mcp?label=PyPI)](https://pypi.org/project/ithz-mcp/)
+[![MCP Registry](https://img.shields.io/badge/MCP%20Registry-dev.ithz%2Fithz--mcp-blue)](https://registry.modelcontextprotocol.io/v0.1/servers/dev.ithz%2Fithz-mcp/versions/latest)
+[![GitHub Release](https://img.shields.io/github/v/release/thegobi/ithz_mcp?include_prereleases&label=GitHub%20release)](https://github.com/thegobi/ithz_mcp/releases/tag/v0.1.0a1)
+
 Local-first deterministic project memory for AI coding agents and
 MCP-compatible development workflows.
 
