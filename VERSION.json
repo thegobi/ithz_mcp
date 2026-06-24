@@ -11,9 +11,9 @@
   "package_filename": "ithz_mcp.zip",
   "package_name": "ithz_mcp-v0.1-product-candidate",
   "package_zip": "ithz_mcp.zip",
-  "package_zip_sha256": "7718823adf5469b370a6dba3cefac761d638a0801c196d0ff9051bd948fcf381",
+  "package_zip_sha256": "6d675f6f7627f2b8245070fd383c75611e38db2db0e149e6c977b20c90e15bd7",
   "product": "ITHZ-MCP / ITHZ ContextDB",
-  "source_git_commit": "7414d5cf204f",
+  "source_git_commit": "c963596a26c3",
   "source_tree_dirty": true,
-  "version": "0.1.0-alpha"
+  "version": "0.1.0a1"
 }
