@@ -3,12 +3,18 @@
   "name": "dev.ithz/ithz-mcp",
   "title": "ITHZ MCP",
   "description": "Local-first deterministic project memory for AI coding agents and MCP workflows.",
-  "version": "0.1.0a1",
+  "version": "0.1.0a2",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ithz-mcp",
-      "version": "0.1.0a1",
+      "version": "0.1.0a2",
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp-server"
+        }
+      ],
       "transport": {
         "type": "stdio"
       }
