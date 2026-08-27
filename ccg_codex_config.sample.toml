@@ -1,0 +1,29 @@
+# Copy to a trusted project's .codex/config.toml or merge into
+# %USERPROFILE%\.codex\config.toml. Replace both absolute paths.
+
+[mcp_servers.ithz_memory]
+command = "C:\\absolute\\path\\ithz_mcp\\.venv\\Scripts\\python.exe"
+args = [
+  "-m",
+  "ithz_mcp",
+  "mcp-server",
+  "--project",
+  "C:\\absolute\\path\\test-project",
+  "--mode",
+  "read-only",
+  "--protocol",
+  "mcp",
+  "--storage-profile",
+  "native-archive",
+]
+startup_timeout_sec = 60
+[mcp_servers.ccg_shadow]
+command = "C:\\absolute\\path\\ithz_mcp\\.venv\\Scripts\\python.exe"
+args = [
+  "-m",
+  "ithz_mcp",
+  "ccg-mcp-server",
+  "--project",
+  "C:\\absolute\\path\\test-project",
+]
+startup_timeout_sec = 60

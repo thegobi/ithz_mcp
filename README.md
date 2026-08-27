@@ -9,6 +9,20 @@
 Local-first deterministic project memory for AI coding agents and
 MCP-compatible development workflows.
 
+## MCP35 Generic CCG Preview
+
+The `codex/mcp35-generic-public` branch contains a GitHub-only preview of ITHZ
+MCP `0.1.0a7` with the generic MCP35 CCG shadow-review court:
+
+- [Windows/Python wheel](artifacts/ithz_mcp-0.1.0a7-py3-none-any.whl)
+- [Slovak installation and test guide](CCG_ITHZ_QUICKSTART_SK.md)
+- [Codex MCP configuration sample](ccg_codex_config.sample.toml)
+- [Release manifest](CCG_ITHZ_RELEASE.json)
+
+Organization-specific constitutions, source registers, task profiles and
+project evidence are deliberately not included. This preview does not replace
+the currently published PyPI or MCP Registry release.
+
 ITHZ MCP stores durable agent work memory in project-owned files: context packs,
 decisions, gates, risks, reviewer notes, scoped claims and explicit checkpoints.
 Git remains the code history and transport; ITHZ MCP keeps the operational

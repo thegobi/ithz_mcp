@@ -1,0 +1,10 @@
+{
+  "artifact": "artifacts/ithz_mcp-0.1.0a7-py3-none-any.whl",
+  "artifact_bytes": 251184,
+  "artifact_sha256": "22e8c4fb6bf1b6ef1d42da261f4ded3f747041c0fd743e9e6cd0617a9e9b18b7",
+  "build_id": "public-generic-mcp35-cached-prefix-multilab.20260827.1",
+  "ccg_version": "mcp35.0-cached-prefix-current-projection-multilab-v1",
+  "distribution": "github_preview",
+  "organization_profiles_included": false,
+  "version": "0.1.0a7"
+}
