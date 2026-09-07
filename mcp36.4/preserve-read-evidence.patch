@@ -1,0 +1,14 @@
+diff --git a/src/ithz_mcp/mcp_server.py b/src/ithz_mcp/mcp_server.py
+--- a/src/ithz_mcp/mcp_server.py
++++ b/src/ithz_mcp/mcp_server.py
+@@ -831,6 +831,10 @@ def _compact_tool_structured_content(value: Any) -> dict[str, Any]:
+     clean = sanitize_json_value(value)
+     if not isinstance(clean, dict):
+         return {"value": clean}
++    # Compaction is for write receipts, never for search/status evidence.
++    receipt_fields = ("finalized", "queued", "appended", "recorded", "ingested")
++    if not any(clean.get(key) is True for key in receipt_fields):
++        return clean
+     update = clean.get("update") if isinstance(clean.get("update"), dict) else {}
+     append = clean.get("append") if isinstance(clean.get("append"), dict) else {}
+     snapshot = clean.get("snapshot") if isinstance(clean.get("snapshot"), dict) else clean.get("snapshot")

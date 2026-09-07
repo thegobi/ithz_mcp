@@ -1,0 +1,32 @@
+{
+  "artifacts": [
+    {
+      "sha256": "B76D90735438DC10F0221532E4B25D08B059BC45C31249B9A939B9626840D2E6",
+      "path": "README.md"
+    },
+    {
+      "sha256": "7F2134167CAA7D4232F788538C4E227AE1C64098D125656ECCE0018E89DBD059",
+      "path": "examples/pregame/CONSTITUTION.md"
+    },
+    {
+      "sha256": "3FF73D076ED42CBF7721E6A17B263F0EEDD13FDB567D54E542862E0F6EE2D6BD",
+      "path": "preserve-read-evidence.patch"
+    },
+    {
+      "sha256": "2E93562BCDE2D8FDE6DBFCF4696220D64C17EE635F8415AC97FF8F829FE3AC5D",
+      "path": "tests/test_memory_integrity.py"
+    },
+    {
+      "sha256": "91F4205FA8E564E2B2BC88100470C34E3B0417912DEDE458C297B1EDBB53D3F5",
+      "path": "tests/test_mcp36_canary.py"
+    },
+    {
+      "sha256": "DEF2A6442309DE7224E00CF195E041BF4C7B502549ABD5F35BF0153167535B7E",
+      "path": "tests/test_mcp_response_preservation.py"
+    }
+  ],
+  "version": "0.1.0a13",
+  "build": "product-candidate-mcp36.4-opt-in-canary.20260902.1",
+  "scope": "integration-patch-and-policy-not-full-distribution",
+  "tests_passed": 19
+}

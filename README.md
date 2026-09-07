@@ -1,5 +1,12 @@
 # ITHZ MCP
 
+## MCP36.4 Integration and Pregame Constitution
+
+The [MCP36.4 integration pack](mcp36.4/README.md) includes the read-evidence
+compatibility fix and the [Pregame project constitution](mcp36.4/examples/pregame/CONSTITUTION.md).
+Existing root downloads and registry metadata below remain on their previously
+published versions; this update is not a new binary or PyPI release.
+
 <!-- mcp-name: dev.ithz/ithz-mcp -->
 
 [![PyPI](https://img.shields.io/pypi/v/ithz-mcp?label=PyPI)](https://pypi.org/project/ithz-mcp/)
